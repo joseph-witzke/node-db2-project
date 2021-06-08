@@ -15,7 +15,9 @@ router.get('/', (req, res, next) => {
     .catch(next);
 });
 
-router.get('/:id', (req, res, next) => {});
+router.get('/:id', checkCarId, (req, res, next) => {
+  res.json(req.car);
+});
 
 router.post('/', (req, res, next) => {});
 
