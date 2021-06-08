@@ -19,7 +19,13 @@ router.get('/:id', checkCarId, (req, res, next) => {
   res.json(req.car);
 });
 
-router.post('/', (req, res, next) => {});
+router.post(
+  '/',
+  checkCarPayload,
+  checkVinNumberValid,
+  checkVinNumberUnique,
+  (req, res, next) => {}
+);
 
 router.use((err, req, res, next) => {
   // eslint-disable-line

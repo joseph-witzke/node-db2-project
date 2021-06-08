@@ -8,8 +8,9 @@ const getById = (id) => {
   return db('cars').where('id', id).first();
 };
 
-const create = () => {
-  // DO YOUR MAGIC
+const create = async (car) => {
+  const [id] = await db('cars').insert(car);
+  return getById(id);
 };
 
 module.exports = {
