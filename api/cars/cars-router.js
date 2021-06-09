@@ -24,7 +24,13 @@ router.post(
   checkCarPayload,
   checkVinNumberValid,
   checkVinNumberUnique,
-  (req, res, next) => {}
+  (req, res, next) => {
+    Car.create(req.body)
+      .then((car) => {
+        res.status(201).json(car);
+      })
+      .catch(next);
+  }
 );
 
 router.use((err, req, res, next) => {
